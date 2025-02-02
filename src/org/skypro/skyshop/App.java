@@ -19,13 +19,13 @@ public class App {
 
         ProductBasket basket1 = new ProductBasket();
 
-        basket1.addPrd(apple);
-        basket1.addPrd(cucumber);
-        basket1.addPrd(turkeyFillet);
-        basket1.addPrd(salad);
-        basket1.addPrd(eggs);
-        basket1.addPrd(quinoa);
-        basket1.addPrd(kefir);
+        basket1.add(apple);
+        basket1.add(cucumber);
+        basket1.add(turkeyFillet);
+        basket1.add(salad);
+        basket1.add(eggs);
+        basket1.add(quinoa);
+        basket1.add(kefir);
 
         basket1.printBaskit();
 

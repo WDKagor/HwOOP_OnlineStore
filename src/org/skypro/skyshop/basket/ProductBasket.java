@@ -13,7 +13,7 @@ public class ProductBasket {
         this.basket = new Product[5];
     }
 
-    public void addPrd (Product product) {
+    public void add (Product product) {
         if (indexInArray < basket.length) {
             basket[indexInArray] = product;
             indexInArray ++;
@@ -24,8 +24,10 @@ public class ProductBasket {
 
     public int totalCost() {
         int total = 0;
-        for (int i = 0; i < indexInArray; i++) {
-            total += basket[i].getPricePrd();
+        for (Product product : basket) {
+            if (product != null) {
+                total += product.getPrice();
+            }
         }
         return total;
     }
@@ -34,26 +36,28 @@ public class ProductBasket {
         if (indexInArray == 0) {
             System.out.println("В корзине пусто");
         } else {
-            for (int i = 0; i < basket.length; i++) {
-                System.out.println(basket[i].toString());
+            for (Product product: basket) {
+                if (product != null) {
+                    System.out.println(product);
+                }
             }
         }
         System.out.println("Итого: " + totalCost());
     }
 
-    public boolean checkBasket(String namePrd) {
-        for (int i = 0; i < basket.length; i++) {
-            if (basket[i].getNamePrd().equals(namePrd)) {
+    public boolean checkBasket(String name) {
+        for (Product product: basket) {
+            if (product != null) {
+                if (product.getName().equals(name)) {
                 return true;
+                }
             }
         }
         return false;
     }
 
     public void clearBasket() {
-        for (int i = 0; i < basket.length; i++) {
-            basket[i] = null;
-        }
+        Arrays.fill(basket, null);
         indexInArray = 0;
     }
 }
