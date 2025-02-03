@@ -1,31 +1,33 @@
 package org.skypro.skyshop;
 
 import org.skypro.skyshop.basket.ProductBasket;
-import org.skypro.skyshop.product.Product;
+import org.skypro.skyshop.product.DiscountedProduct;
+import org.skypro.skyshop.product.FixPriceProduct;
+import org.skypro.skyshop.product.SimpleProduct;
 
 public class App {
     public static void main(String[] args) {
 
-        Product apple = new Product("Apple", 256);
-        Product potatos = new Product("Potatos", 85);
-        Product turkeyFillet = new Product("Turkey fillet", 498);
-        Product cucumber = new Product("Cucumber", 130);
-        Product tomatos = new Product("Tomatos", 326);
-        Product pamelo = new Product("Pamelo", 432);
-        Product eggs = new Product("Eggs", 93);
-        Product salad = new Product("Salad", 148);
-        Product quinoa = new Product("Quinoa", 252);
-        Product kefir = new Product("Kefir", 76);
+        SimpleProduct apple = new SimpleProduct("Apple", 256);
+        SimpleProduct potatos = new SimpleProduct("Potatos", 85);
+        DiscountedProduct turkeyFillet = new DiscountedProduct("Turkey fillet", 498, 25);
+        SimpleProduct cucumber = new SimpleProduct("Cucumber", 130);
+        SimpleProduct tomatos = new SimpleProduct("Tomatos", 326);
+        SimpleProduct pamelo = new SimpleProduct("Pamelo", 432);
+        SimpleProduct eggs = new SimpleProduct("Eggs", 93);
+        SimpleProduct salad = new SimpleProduct("Salad", 148);
+        DiscountedProduct quinoa = new DiscountedProduct("Quinoa", 252, 16);
+        FixPriceProduct kefir = new FixPriceProduct("Kefir",115);
 
         ProductBasket basket1 = new ProductBasket();
 
         basket1.add(apple);
-        basket1.add(cucumber);
-        basket1.add(turkeyFillet);
-        basket1.add(salad);
-        basket1.add(eggs);
         basket1.add(quinoa);
+        basket1.add(turkeyFillet);
         basket1.add(kefir);
+        basket1.add(eggs);
+        basket1.add(cucumber);
+        basket1.add(salad);
 
         basket1.printBaskit();
 

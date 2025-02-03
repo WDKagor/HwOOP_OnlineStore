@@ -32,6 +32,19 @@ public class ProductBasket {
         return total;
     }
 
+    public int specialProducts() {
+        int count = 0;
+        for (Product product : basket) {
+            if (product != null) {
+                if (product.isSpecial()) {
+                    count++;
+                }
+            }
+
+        }
+        return count;
+    }
+
     public void printBaskit() {
         if (indexInArray == 0) {
             System.out.println("В корзине пусто");
@@ -42,7 +55,8 @@ public class ProductBasket {
                 }
             }
         }
-        System.out.println("Итого: " + totalCost());
+        System.out.println("Итого: " + totalCost() + " руб.");
+        System.out.println("Специальные продукты: " + specialProducts() + " шт.");
     }
 
     public boolean checkBasket(String name) {
