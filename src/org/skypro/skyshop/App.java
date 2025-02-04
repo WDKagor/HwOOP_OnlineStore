@@ -31,8 +31,6 @@ public class App {
 
         basket1.printBasket();
 
-//        basket1.totalCost();
-
         basket1.checkBasket("Salad");
 
         basket1.checkBasket("Pamelo");
@@ -40,8 +38,6 @@ public class App {
         basket1.clearBasket();
 
         basket1.printBasket();
-
-//        basket1.totalCost();
 
         basket1.checkBasket("Apple");
     }
