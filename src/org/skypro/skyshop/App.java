@@ -17,7 +17,7 @@ public class App {
         SimpleProduct eggs = new SimpleProduct("Eggs", 93);
         SimpleProduct salad = new SimpleProduct("Salad", 148);
         DiscountedProduct quinoa = new DiscountedProduct("Quinoa", 252, 16);
-        FixPriceProduct kefir = new FixPriceProduct("Kefir",115);
+        FixPriceProduct kefir = new FixPriceProduct("Kefir");
 
         ProductBasket basket1 = new ProductBasket();
 
@@ -29,9 +29,9 @@ public class App {
         basket1.add(cucumber);
         basket1.add(salad);
 
-        basket1.printBaskit();
+        basket1.printBasket();
 
-        basket1.totalCost();
+//        basket1.totalCost();
 
         basket1.checkBasket("Salad");
 
@@ -39,9 +39,9 @@ public class App {
 
         basket1.clearBasket();
 
-        basket1.printBaskit();
+        basket1.printBasket();
 
-        basket1.totalCost();
+//        basket1.totalCost();
 
         basket1.checkBasket("Apple");
     }
