@@ -41,7 +41,7 @@ public class ProductBasket {
         System.out.println("Итого: " + total + " руб.");
         System.out.println("Специальные продукты: " + count + " шт.");
     }
-
+// Метод просто проверяет наличие продукта в Корзине
     public boolean checkBasket(String name) {
         for (Product product: basket) {
             if (product != null) {
@@ -52,6 +52,22 @@ public class ProductBasket {
         }
         return false;
     }
+    // Метод проверяет наличие продукта в Корзине и выводит результат проверки в консоль
+    public void checkBasketPrint (String name) {
+        boolean found = false;
+        for (Product product : basket) {
+            if (product != null && product.getName().equals(name)) {
+                found = true;
+                break;
+            }
+        }
+            if (found) {
+            System.out.println(name + " есть в корзине!");
+            } else {
+            System.out.println(name + " нет в корзине");
+            }
+    }
+
 
     public void clearBasket() {
         Arrays.fill(basket, null);
