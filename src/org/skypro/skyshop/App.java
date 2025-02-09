@@ -71,5 +71,6 @@ public class App {
 
         System.out.println(Arrays.toString(engine.search("Tomatoes")));
         System.out.println(Arrays.toString(engine.search("Kefir")));
+        System.out.println(Arrays.toString(engine.search("Quinoa")));
     }
 }
