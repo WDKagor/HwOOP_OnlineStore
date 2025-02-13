@@ -14,12 +14,17 @@ public class ProductBasket {
     }
 
     public void add (Product product) {
-        if (indexInArray < basket.length) {
-            basket[indexInArray] = product;
-            indexInArray ++;
-        } else {
-            System.out.println("Невозможно добавить продукт");
+        try {
+            if (indexInArray < basket.length) {
+                basket[indexInArray] = product;
+                indexInArray ++;
+            } else {
+                System.out.println("Невозможно добавить продукт");
+            }
+        } catch (IllegalArgumentException illegalArgumentException) {
+            System.out.println("Недопустимое название продукта");
         }
+
     }
 
     public void printBasket() {
