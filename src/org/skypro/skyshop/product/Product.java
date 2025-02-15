@@ -36,4 +36,5 @@ public abstract class Product implements Searchable {
     public void getStringRepresentation() {
         Searchable.super.getStringRepresentation();
     }
+
 }

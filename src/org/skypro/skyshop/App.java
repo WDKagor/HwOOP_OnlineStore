@@ -9,6 +9,8 @@ import org.skypro.skyshop.product.SimpleProduct;
 
 import java.util.Arrays;
 
+import static org.skypro.skyshop.SearchEngine.findBestMatch;
+
 public class App {
     public static void main(String[] args) {
         try {
@@ -68,9 +70,13 @@ public class App {
             engine.add(pamelo);
             engine.add(quinoa);
 
-            System.out.println(Arrays.toString(engine.search("Tomatoes")));
+            System.out.println("\n" + Arrays.toString(engine.search("Tomatoes")));
             System.out.println(Arrays.toString(engine.search("Kefir")));
-            System.out.println(Arrays.toString(engine.search("Quinoa")));
+
+            Searchable[] articles = {article01, article02, article03, article04};
+            String queryToday = "Kefir";
+
+            System.out.println("\n" + "Лучшая статья по запросу <" + queryToday + ">:" + "\n" +findBestMatch(queryToday, articles));
 
         } catch (IllegalArgumentException e) {
             System.out.println("Ошибка при создании продкта: " + e.getMessage());

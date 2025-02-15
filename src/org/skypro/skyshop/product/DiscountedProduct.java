@@ -33,4 +33,9 @@ public class DiscountedProduct extends Product {
     public boolean isSpecial() {
         return true;
     }
+
+    @Override
+    public String getSearchTerm() {
+        return getName();
+    }
 }

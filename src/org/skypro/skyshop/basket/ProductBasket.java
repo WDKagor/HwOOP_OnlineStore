@@ -44,7 +44,7 @@ public class ProductBasket {
             }
         }
         System.out.println("Итого: " + total + " руб.");
-        System.out.println("Специальные продукты: " + count + " шт.");
+        System.out.println("Специальные продукты: " + count + " шт." + "\n");
     }
 // Метод просто проверяет наличие продукта в Корзине
     public boolean checkBasket(String name) {
