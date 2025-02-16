@@ -19,7 +19,7 @@ public class ProductBasket {
                 basket[indexInArray] = product;
                 indexInArray ++;
             } else {
-                System.out.println("Невозможно добавить продукт");
+                System.out.println("Невозможно добавить " + product + ", т.к. корзина заполнена!");
             }
         } catch (IllegalArgumentException illegalArgumentException) {
             System.out.println("Недопустимое название продукта");

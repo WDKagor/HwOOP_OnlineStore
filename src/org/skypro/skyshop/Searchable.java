@@ -6,6 +6,4 @@ public interface Searchable {
     default void getStringRepresentation() {
         System.out.println(searchTerm() + " - " + typeTerm());
     }
-
-    String getSearchTerm();
 }

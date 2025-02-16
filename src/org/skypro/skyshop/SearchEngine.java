@@ -1,10 +1,6 @@
 package org.skypro.skyshop;
 
 import org.skypro.skyshop.exeptions.BestResultNotFound;
-import org.skypro.skyshop.exeptions.EmptyQueryOrSearchScope;
-import org.skypro.skyshop.product.DiscountedProduct;
-import org.skypro.skyshop.product.FixPriceProduct;
-import org.skypro.skyshop.product.SimpleProduct;
 
 public class SearchEngine {
     private Searchable[] searchables;
@@ -46,16 +42,16 @@ public class SearchEngine {
     27 и мы прекращаем поиск
     28 После этого возвращаем заполненный результатами поиска массив results. Он может содержать null, т.к. может быть найдено менее 5-ти соответствий запросу.*/
 
-    public static Searchable findBestMatch(String search, Searchable[] items) throws BestResultNotFound, EmptyQueryOrSearchScope {
+    public static Searchable findBestMatch(String search, Searchable[] items) throws BestResultNotFound {
         if (search == null || search.isEmpty() || items == null || items.length == 0) {
-            throw new EmptyQueryOrSearchScope(search);
+            throw new BestResultNotFound(search);
         }
 
         Searchable bestMatch = null;
         int maxCount = 0;
 
         for (Searchable item : items) {
-            int count = countOccurrences(item.getSearchTerm(), search);
+            int count = getSearchTerm(item.searchTerm(), search);
 
             if (count > maxCount) {
                 maxCount = count;
@@ -71,7 +67,7 @@ public class SearchEngine {
     }
 
     // Метод для подсчёта количества вхождений подстроки в строке
-    private static int countOccurrences(String text, String search) {
+    private static int getSearchTerm(String text, String search) {
         if (text == null || search == null || search.isEmpty()) {
             return 0;
         }

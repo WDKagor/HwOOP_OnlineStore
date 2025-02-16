@@ -31,8 +31,4 @@ public final class Article implements Searchable {
         Searchable.super.getStringRepresentation();
     }
 
-    @Override
-    public String getSearchTerm() {
-        return toString();
-    }
 }

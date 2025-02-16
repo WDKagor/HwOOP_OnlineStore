@@ -26,9 +26,4 @@ public class SimpleProduct extends Product  {
     public boolean isSpecial() {
         return false;
     }
-
-    @Override
-    public String getSearchTerm() {
-        return getName();
-    }
 }

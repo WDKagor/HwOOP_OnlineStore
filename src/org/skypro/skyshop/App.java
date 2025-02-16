@@ -4,7 +4,6 @@ import org.skypro.skyshop.article.Article;
 import org.skypro.skyshop.basket.ProductBasket;
 import org.skypro.skyshop.product.DiscountedProduct;
 import org.skypro.skyshop.product.FixPriceProduct;
-import org.skypro.skyshop.product.Product;
 import org.skypro.skyshop.product.SimpleProduct;
 
 import java.util.Arrays;
@@ -13,27 +12,88 @@ import static org.skypro.skyshop.SearchEngine.findBestMatch;
 
 public class App {
     public static void main(String[] args) {
+        SimpleProduct apple = null;
+        SimpleProduct potatos = null;
+        DiscountedProduct turkeyFillet = null;
+        SimpleProduct cucumber = null;
+        SimpleProduct tomatoes = null;
+        SimpleProduct pamelo = null;
+        SimpleProduct eggs = null;
+        SimpleProduct salad = null;
+        DiscountedProduct quinoa = null;
+
         try {
-            SimpleProduct apple = new SimpleProduct("Apple", 256);
-            SimpleProduct potatos = new SimpleProduct("Potatos", 85);
-            DiscountedProduct turkeyFillet = new DiscountedProduct("Turkey fillet", 498, 25);
-            SimpleProduct cucumber = new SimpleProduct("Cucumber", 130);
-            SimpleProduct tomatoes = new SimpleProduct("Tomatoes", 326);
-            SimpleProduct pamelo = new SimpleProduct("Pamelo", 432);
-            SimpleProduct eggs = new SimpleProduct("Eggs", 93);
-            SimpleProduct salad = new SimpleProduct("Salad", 148);
-            DiscountedProduct quinoa = new DiscountedProduct("Quinoa", 252, 16);
+            apple = new SimpleProduct("Apple", 256);
+        } catch (IllegalArgumentException e) {
+            System.out.println("Ошибка при создании продкта: " + e.getMessage());
+        }
+        try {
+            potatos = new SimpleProduct("Potatos", 85);
+        } catch (IllegalArgumentException e) {
+            System.out.println("Ошибка при создании продкта: " + e.getMessage());
+        }
+        try {
+            turkeyFillet = new DiscountedProduct("Turkey fillet", 498, 25);
+        } catch (IllegalArgumentException e) {
+            System.out.println("Ошибка при создании продкта: " + e.getMessage());
+        }
+        try {
+            cucumber = new SimpleProduct("Cucumber", 130);
+        } catch (IllegalArgumentException e) {
+            System.out.println("Ошибка при создании продкта: " + e.getMessage());
+        }
+        try {
+            tomatoes = new SimpleProduct("Tomatoes", 326);
+        } catch (IllegalArgumentException e) {
+            System.out.println("Ошибка при создании продкта: " + e.getMessage());
+        }
+        try {
+            pamelo = new SimpleProduct("Pamelo", 432);
+        } catch (IllegalArgumentException e) {
+            System.out.println("Ошибка при создании продкта: " + e.getMessage());
+        }
+        try {
+            eggs = new SimpleProduct("Eggs", 93);
+        } catch (IllegalArgumentException e) {
+            System.out.println("Ошибка при создании продкта: " + e.getMessage());
+        }
+        try {
+            salad = new SimpleProduct("Salad", 148);
+        } catch (IllegalArgumentException e) {
+            System.out.println("Ошибка при создании продкта: " + e.getMessage());
+        }
+        try {
+            quinoa = new DiscountedProduct("Quinoa", 252, 16);
+        } catch (IllegalArgumentException e) {
+            System.out.println("Ошибка при создании продкта: " + e.getMessage());
+        }
             FixPriceProduct kefir = new FixPriceProduct("Kefir");
 
             ProductBasket basket1 = new ProductBasket();
 
-            basket1.add(apple);
-            basket1.add(quinoa);
-            basket1.add(turkeyFillet);
+            if (apple != null) {
+                basket1.add(apple);
+            }
+            if (quinoa != null) {
+                basket1.add(quinoa);
+            }
+            if (turkeyFillet != null) {
+                basket1.add(turkeyFillet);
+            }
+
             basket1.add(kefir);
-            basket1.add(eggs);
-            basket1.add(cucumber);
-            basket1.add(salad);
+
+            if (eggs != null) {
+                basket1.add(eggs);
+            }
+            if (cucumber != null) {
+                basket1.add(cucumber);
+            }
+            if (salad != null) {
+                basket1.add(salad);
+            }
+
+        System.out.println(" ");
 
             basket1.printBasket();
 
@@ -78,8 +138,6 @@ public class App {
 
             System.out.println("\n" + "Лучшая статья по запросу <" + queryToday + ">:" + "\n" +findBestMatch(queryToday, articles));
 
-        } catch (IllegalArgumentException e) {
-            System.out.println("Ошибка при создании продкта: " + e.getMessage());
-        }
+
     }
 }
