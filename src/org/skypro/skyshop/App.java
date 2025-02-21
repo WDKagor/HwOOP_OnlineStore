@@ -95,21 +95,19 @@ public class App {
 
         System.out.println(" ");
 
-            basket1.printBasket();
-
-            basket1.checkBasket("Salad");
-
-            basket1.checkBasket("Pamelo");
+            basket1.printListBasket();
 
             basket1.checkBasketPrint("Salad");
 
             basket1.checkBasketPrint("Pamelo");
 
+        System.out.println(" ");
+
             basket1.clearBasket();
 
-            basket1.printBasket();
+            basket1.printListBasket();
 
-            basket1.checkBasket("Apple");
+            basket1.checkBasketPrint("Apple");
 
             Article article01 = new Article("Benefits of kefir", "Kefir is healthy because it contains beneficial lactic acid bacteria, which help not only kefir itself, but also other foods to be well digested.");
             Article article02 = new Article("Turkey with Tomatoes", "It is recommended to serve turkey with Tomatoes as a hot dish with some side dish..");
