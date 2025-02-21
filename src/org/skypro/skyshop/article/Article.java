@@ -30,4 +30,5 @@ public final class Article implements Searchable {
     public void getStringRepresentation() {
         Searchable.super.getStringRepresentation();
     }
+
 }

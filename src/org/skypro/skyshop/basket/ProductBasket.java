@@ -14,12 +14,17 @@ public class ProductBasket {
     }
 
     public void add (Product product) {
-        if (indexInArray < basket.length) {
-            basket[indexInArray] = product;
-            indexInArray ++;
-        } else {
-            System.out.println("Невозможно добавить продукт");
+        try {
+            if (indexInArray < basket.length) {
+                basket[indexInArray] = product;
+                indexInArray ++;
+            } else {
+                System.out.println("Невозможно добавить " + product + ", т.к. корзина заполнена!");
+            }
+        } catch (IllegalArgumentException illegalArgumentException) {
+            System.out.println("Недопустимое название продукта");
         }
+
     }
 
     public void printBasket() {
@@ -39,7 +44,7 @@ public class ProductBasket {
             }
         }
         System.out.println("Итого: " + total + " руб.");
-        System.out.println("Специальные продукты: " + count + " шт.");
+        System.out.println("Специальные продукты: " + count + " шт." + "\n");
     }
 // Метод просто проверяет наличие продукта в Корзине
     public boolean checkBasket(String name) {

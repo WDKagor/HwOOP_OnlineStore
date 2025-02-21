@@ -6,6 +6,9 @@ public abstract class Product implements Searchable {
     private String name;
 
     public Product(String name) {
+        if (name.isBlank()) {
+            throw new IllegalArgumentException("Название продукта не может быть пустым");
+        }
         this.name = name;
     }
 
@@ -33,4 +36,5 @@ public abstract class Product implements Searchable {
     public void getStringRepresentation() {
         Searchable.super.getStringRepresentation();
     }
+
 }
