@@ -58,10 +58,6 @@ public class ProductBasket {
 
 
     public void clearBasket() {
-        ListIterator<Product> iterator = basket.listIterator();
-        while (iterator.hasNext()) {
-            iterator.next();
-            iterator.set(null);
-        }
+        basket.clear();
     }
 }
