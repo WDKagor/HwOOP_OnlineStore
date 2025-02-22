@@ -2,48 +2,32 @@ package org.skypro.skyshop;
 
 import org.skypro.skyshop.exeptions.BestResultNotFound;
 
-public class SearchEngine {
-    private Searchable[] searchables;
-    private int count = 0;
+import java.util.ArrayList;
+import java.util.List;
 
-    public SearchEngine(int size) {
-        searchables = new Searchable[size];
+public class SearchEngine {
+    private List <Searchable> searchables;
+
+    public SearchEngine() {
+        searchables = new ArrayList<>();
     }
 
     public void add(Searchable item) {
-        if (count < searchables.length) {
-            searchables[count++] = item;
-        } else {
-            System.out.println("Невозможно добавить " + item + ", т.к. массив заполнен!");
-        }
+        searchables.add(item);
     }
 
-    public Searchable[] search(String query) {
-        Searchable[] results = new Searchable[5];
-        int foundCount = 0;
-
+    public List<Searchable> search(String query) {
+        List <Searchable> results = new ArrayList<>();
         for (Searchable item : searchables) {
             if (item != null && item.searchTerm().contains(query)) {
-                results[foundCount++] = item;
-                if (foundCount == 5) {
-                    break;
-                }
+                results.add(item);
             }
         }
         return results;
     }
-    /*19 Метод будет возвращать массив Searchable[], принимая в качестве аргумента строковое значение с именем query
-    20 Создаем массив results, где будем собирать результаты, и как раз его и будет возвращать этот метод
-    21 Создаем счётчик, который будет считать количество найденных совпадений. Присваем нулевое значение для начала отсчёта
-    23 Используем цикл foreach - для каждого значения item типа Searchable в коллекции searchables сделать ниже следующее
-    24 Если значение item, полученное с помощью метода searchTerm() не равно нулю и соответствует сигнатурой (с учетом регистра) запросу query,
-    25 тогда в массив results в элемент, на единицу бОльший текущего значения счётчика foundCount, добавляем найденный элемент item
-    26 Если текущее значение foundCount равно 5, значит массив результаток заполнен
-    27 и мы прекращаем поиск
-    28 После этого возвращаем заполненный результатами поиска массив results. Он может содержать null, т.к. может быть найдено менее 5-ти соответствий запросу.*/
 
-    public static Searchable findBestMatch(String search, Searchable[] items) throws BestResultNotFound {
-        if (search == null || search.isEmpty() || items == null || items.length == 0) {
+    public static Searchable findBestMatch(String search, List<Searchable> items) throws BestResultNotFound {
+        if (search == null || search.isEmpty() || items == null || items.isEmpty()) {
             throw new BestResultNotFound(search);
         }
 

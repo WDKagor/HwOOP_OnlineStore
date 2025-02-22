@@ -60,4 +60,19 @@ public class ProductBasket {
     public void clearBasket() {
         basket.clear();
     }
+
+    public List<Product> removeProductByName(String name) {
+        List<Product> removedProducts = new ArrayList<>(); // Список удалённых продуктов
+
+        Iterator<Product> iterator = basket.iterator();
+        while (iterator.hasNext()) {
+            Product product = iterator.next();
+            if (product.getName().equals(name)) {
+                removedProducts.add(product); // Добавляем в список удалённых продуктов
+                iterator.remove(); // Удаляем из корзины
+            }
+        }
+
+        return removedProducts;
+    }
 }
