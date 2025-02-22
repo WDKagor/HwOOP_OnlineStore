@@ -2,63 +2,46 @@ package org.skypro.skyshop.basket;
 
 import org.skypro.skyshop.product.Product;
 
-import java.util.Arrays;
+import java.util.*;
 
 public class ProductBasket {
-    private Product[] basket;
-    private int indexInArray;
+    private List<Product> basket;
 
     public ProductBasket() {
-        this.indexInArray = 0;
-        this.basket = new Product[5];
+        this.basket = new LinkedList<>();
     }
 
-    public void add (Product product) {
+    public void add(Product product) {
         try {
-            if (indexInArray < basket.length) {
-                basket[indexInArray] = product;
-                indexInArray ++;
-            } else {
-                System.out.println("Невозможно добавить " + product + ", т.к. корзина заполнена!");
-            }
+            basket.add(product);
         } catch (IllegalArgumentException illegalArgumentException) {
             System.out.println("Недопустимое название продукта");
         }
 
     }
 
-    public void printBasket() {
+    public void printListBasket() {
+        Iterator<Product> iterator = basket.iterator();
         int total = 0;
         int count = 0;
-        if (indexInArray == 0) {
+        if (!iterator.hasNext()) {
             System.out.println("В корзине пусто");
         } else {
-            for (Product product: basket) {
-                if (product != null) {
-                    System.out.println(product);
-                    total += product.getPrice();
-                    if (product.isSpecial()) {
-                        count++;
-                    }
+            while (iterator.hasNext()) {
+                Product product = iterator.next();
+                System.out.println(product);
+                total += product.getPrice();
+                if (product.isSpecial()) {
+                    count++;
                 }
             }
         }
         System.out.println("Итого: " + total + " руб.");
         System.out.println("Специальные продукты: " + count + " шт." + "\n");
     }
-// Метод просто проверяет наличие продукта в Корзине
-    public boolean checkBasket(String name) {
-        for (Product product: basket) {
-            if (product != null) {
-                if (product.getName().equals(name)) {
-                return true;
-                }
-            }
-        }
-        return false;
-    }
+
     // Метод проверяет наличие продукта в Корзине и выводит результат проверки в консоль
-    public void checkBasketPrint (String name) {
+    public void checkBasketPrint(String name) {
         boolean found = false;
         for (Product product : basket) {
             if (product != null && product.getName().equals(name)) {
@@ -66,16 +49,30 @@ public class ProductBasket {
                 break;
             }
         }
-            if (found) {
+        if (found) {
             System.out.println(name + " есть в корзине!");
-            } else {
+        } else {
             System.out.println(name + " нет в корзине");
-            }
+        }
     }
 
 
     public void clearBasket() {
-        Arrays.fill(basket, null);
-        indexInArray = 0;
+        basket.clear();
+    }
+
+    public List<Product> removeProductByName(String name) {
+        List<Product> removedProducts = new ArrayList<>(); // Список удалённых продуктов
+
+        Iterator<Product> iterator = basket.iterator();
+        while (iterator.hasNext()) {
+            Product product = iterator.next();
+            if (product.getName().equals(name)) {
+                removedProducts.add(product); // Добавляем в список удалённых продуктов
+                iterator.remove(); // Удаляем из корзины
+            }
+        }
+
+        return removedProducts;
     }
 }
